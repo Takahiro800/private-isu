@@ -27,4 +27,5 @@ renovate.json
 /webapp/php/
 /webapp/node/
 *.pem
+/webapp/public/image
 
