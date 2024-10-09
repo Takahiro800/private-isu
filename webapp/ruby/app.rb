@@ -339,7 +339,7 @@ module Isuconp
         pid = db.last_id
 
         imgfile = IMAGE_DIR + "/#{pid}.#{ext}"
-        FileUtils.mv(params['faile'][:tempfile].path, imgfile)
+        FileUtils.mv(params['file'][:tempfile], imgfile)
         FileUtils.chmod(0644, imgfile)
 
         redirect "/posts/#{pid}", 302
@@ -361,8 +361,8 @@ module Isuconp
           (params[:ext] == "gif" && post[:mime] == "image/gif")
         headers['Content-Type'] = post[:mime]
 
-        fimgfile = IMAGE_DIR + "/#{params[:id]}.#{params[:ext]}"
-        f = File.open(fimgfile, "w")
+        imgfile = IMAGE_DIR + "/#{post[:id]}.#{params[:ext]}"
+        f = File.open(imgfile, "w")
         f.write(post[:imgdata])
         f.close()
 
